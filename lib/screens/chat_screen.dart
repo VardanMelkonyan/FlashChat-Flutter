@@ -6,6 +6,9 @@ import 'package:intl/intl.dart';
 import 'dart:io' show Platform;
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+import 'login_screen.dart';
+import 'welcome_screen.dart';
+
 final _firestore = Firestore.instance;
 FirebaseUser loggedInUser;
 
@@ -76,7 +79,7 @@ class _ChatScreenState extends State<ChatScreen> {
               icon: Icon(Icons.close),
               onPressed: () {
                 _auth.signOut();
-                Navigator.pop(context);
+                Navigator.popAndPushNamed(context, LoginScreen.id);
               }),
         ],
         title: Text('⚡️Chat'),

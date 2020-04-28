@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'chat_screen.dart';
 import 'login_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+
+import 'login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = '/Wlcome_Screen';
@@ -20,6 +24,18 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   AnimationController controller;
   Animation animation;
 
+  Future<String> getInitialRout() async {
+    final _auth = FirebaseAuth.instance;
+    var user = await _auth.currentUser();
+
+    print("this is the user $user");
+    if (user != null) {
+      return ChatScreen.id;
+    } else {
+      return LoginScreen.id;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -32,9 +48,10 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         ColorTween(begin: Colors.grey, end: Colors.white).animate(controller);
 
     controller.forward();
-    controller.addStatusListener((status) {
+    controller.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
-        Navigator.pushNamed(context, LoginScreen.id);
+        var rout = await getInitialRout();
+        Navigator.pushNamed(context, rout);
       }
     });
 
@@ -73,8 +90,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
                   ),
-                  onTap: () {
-                    Navigator.pushNamed(context, LoginScreen.id);
+                  onTap: () async {
+                    var rout = await getInitialRout();
+                    Navigator.pushNamed(context, rout);
                   },
                 ),
                 SizedBox(

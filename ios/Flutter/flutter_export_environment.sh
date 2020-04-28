@@ -1,8 +1,8 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/Users/vardan/Developer/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/vardan/Programming/flash-chat-flutter"
-export "FLUTTER_TARGET=/Users/vardan/Programming/flash-chat-flutter/lib/main.dart"
+export "FLUTTER_APPLICATION_PATH=/Users/vardan/Programming/FlashChat-Flutter"
+export "FLUTTER_TARGET=/Users/vardan/Programming/FlashChat-Flutter/lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"
 export "FLUTTER_FRAMEWORK_DIR=/Users/vardan/Developer/flutter/bin/cache/artifacts/engine/ios"
